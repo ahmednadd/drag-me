@@ -7,27 +7,29 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  max-height: 100vh;
+  grid-gap: 0px;
 }
 
 .window-section-1 {
   height: 50vh;
   width: 50vw;
-  background-color: palevioletred; 
+  background-color: palevioletred;
 }
 .window-section-2 {
   height: 50vh;
   width: 50vw;
-  background-color: orange; 
+  background-color: orange;
 }
 .window-section-3 {
   height: 50vh;
   width: 50vw;
-  background-color: yellowgreen; 
+  background-color: yellowgreen;
 }
 .window-section-4 {
   height: 50vh;
   width: 50vw;
-  background-color: blueviolet; 
+  background-color: blueviolet;
 }
 
 .video-container {
@@ -38,7 +40,7 @@
   bottom: 25px;
   left: 25px;
   border-radius: 10px;
-  box-shadow: 0 25px 50px rgba(0,0,0,.45);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
 }
 
 .video-container:hover {
@@ -55,5 +57,3 @@
 video:focus {
   outline: none;
 }
-
-
