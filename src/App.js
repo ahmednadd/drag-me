@@ -59,6 +59,7 @@ function App() {
   const touchEnd = event => {
     event.preventDefault();
     collisionDetect();
+    videoControl.current.play();
   };
 
   const collisionDetect = () => {
