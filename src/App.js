@@ -38,6 +38,7 @@ function App() {
 
   const handleTouchStart = (event) => {
     event.preventDefault();
+    videoControl.current.pause();
     videoEl.current.addEventListener("touchend", handleTouchEnd);
     document.body.addEventListener("touchmove", handleTouchMove);
     document.body.addEventListener("touchend", handleTouchEnd);
