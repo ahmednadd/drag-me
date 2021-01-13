@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import SampleVideo from './assets/video/sample.mp4'
 import './App.css';
 
@@ -18,6 +17,7 @@ function App() {
 
   const handleMouseDown = (event) => {
     event.preventDefault();
+    videoControl.current.pause();
     videoEl.current.style.cursor = "grabbing";
     videoEl.current.addEventListener("mouseup", handleMouseUp);
     document.body.addEventListener("mousemove", handleMouseMove);
@@ -32,13 +32,9 @@ function App() {
   }
 
   const handleMouseMove = event => {
-    setVideoElCalcTop(event.clientY - 55);
-    setVideoElCalcLeft(event.clientX - 40);
+    setVideoElCalcTop(event.clientY - 50);
+    setVideoElCalcLeft(event.clientX - 75);
   }
-
-  const playVideo = () => {
-    videoControl.current.play();
-  };
 
   const handleTouchStart = (event) => {
     event.preventDefault();
@@ -53,8 +49,9 @@ function App() {
   }
 
   const handleTouchMove = event => {
-    setVideoElCalcTop(event.changedTouches[0].pageY - 55);
-    setVideoElCalcLeft(event.changedTouches[0].pageX - 40);
+    event.preventDefault();
+    setVideoElCalcTop(event.changedTouches[0].pageY - 35);
+    setVideoElCalcLeft(event.changedTouches[0].pageX - 55);
     document.body.addEventListener("touchend", touchEnd);
   }
 
@@ -122,6 +119,15 @@ function App() {
     }
   }
 
+  const playVideo = event => {
+    event.preventDefault();
+    if (videoControl.current.paused) {
+      videoControl.current.play();
+    } else {
+      videoControl.current.pause();
+    }
+  };
+
   return (
     <>
     <div className={`window-section-container`}>
@@ -136,7 +142,7 @@ function App() {
       onTouchStart = {(event) => handleTouchStart(event)}
       style={{top: videoElCalcTop, left: videoElCalcLeft, bottom: videoElCalcBottom, right: videoElCalcRight}}
     >
-      <video ref={videoControl} onClick={() => playVideo()}>
+      <video loop ref={videoControl} onClick={(event) => playVideo(event)}>
         <source src={SampleVideo} type="video/mp4" />
       </video>
     </div>

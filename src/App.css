@@ -34,13 +34,29 @@
 
 .video-container {
   position: fixed;
-  height: 110px;
-  width: 80px;
+  height: 100px;
+  width: 150px;
   background-color: lightgrey;
   bottom: 25px;
   left: 25px;
-  border-radius: 10px;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+  box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+  outline-offset: 5px;
+}
+
+.video-container:hover {
+  outline: 2px solid #fff;
+  -webkit-transform: scale(1.05) translateY(-2px);
+  transform: scale(1.05) translateY(-2px);
+  -webkit-box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+  box-shadow: 0 2.5rem 4rem rgba(0,0,0,0.5);
+}
+
+@media only screen and (max-width: 600px) {
+  .video-container {
+    height: 70px;
+    width: 110px;
+  }
 }
 
 .video-container:hover {
@@ -50,7 +66,6 @@
 .video-container video {
   height: 100%;
   width: 100%;
-  border-radius: 10px;
   object-fit: cover;
 }
 
